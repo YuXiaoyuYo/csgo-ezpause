@@ -5,23 +5,16 @@
 public Plugin:myinfo = {
     name = "Admin Pause",
     author = "YuXiaoyu",
-    description = "CS:GO Pause Commands For Admin",
-    version = "1.0",
-    url = "https://yu.hi.cn"
+    description = "CS:GO Pause Commands",
+    version = "1.1",
+    url = "https://yu.nm.cn"
 };
 
 public OnPluginStart() {
     RegConsoleCmd("sm_pause", Command_ForcePause, "pause");
+    RegConsoleCmd("sm_p", Command_ForcePause, "pause");
     RegConsoleCmd("sm_unpause", Command_ForceUnpause, "unpause");
-}
-
-stock void Colorize(char[] msg, int size, bool stripColor = false) {
-  for (int i = 0; i < sizeof(_colorNames); i++) {
-    if (stripColor)
-      ReplaceString(msg, size, _colorNames[i], "\x01");
-    else
-      ReplaceString(msg, size, _colorNames[i], _colorCodes[i]);
-  }
+    RegConsoleCmd("sm_unp", Command_ForceUnpause, "unpause");
 }
 
 public Action:Command_ForcePause(client, args) {
